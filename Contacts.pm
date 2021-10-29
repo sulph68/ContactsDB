@@ -56,7 +56,7 @@ sub label2phone() {
 	return 1 if ($l eq "Home");
 	return 2 if ($l eq "Fax");
 	return 3 if ($l eq "Other");
-	return 4 if ($l eq "E-Mail");
+	return 4 if ($l eq "E-mail");
 	return 5 if ($l eq "Main");
 	return 6 if ($l eq "Pager");
 	return 7 if ($l eq "Mobile");
@@ -96,7 +96,7 @@ sub label2address() {
 	"Work",
 	"Home",
 	"Mobile",
-	"E-Mail",
+	"E-mail",
 	"Main",
 	"Pager",
 	"Other"
@@ -107,7 +107,7 @@ sub label2display() {
 	return 0 if ($l eq "Work");
 	return 1 if ($l eq "Home");
 	return 2 if ($l eq "Mobile");
-	return 3 if ($l eq "E-Mail");
+	return 3 if ($l eq "E-mail");
 	return 4 if ($l eq "Main");
 	return 5 if ($l eq "Pager");
 	return 6 if ($l eq "Other");
@@ -344,14 +344,14 @@ sub new_Record
 
 	# Initialize the phone labels
 	$retval->{phoneLabel} = {
-		phone1	=> 0,		# Work
-		phone2	=> 1,		# Home
-		phone3	=> 7,		# Mobile
-		phone4	=> 4,		# E-mail
-		phone5	=> 5,		# Main
-		phone6	=> 6,		# Pager
-		phone7	=> 7,		# Other
-		display	=> 2,		# Display Mobile by default
+		phone1	=> "Work",		# Work 0
+		phone2	=> "Home",		# Home 1
+		phone3	=> "Mobile",		# Mobile 7
+		phone4	=> "E-mail",		# E-mail 4
+		phone5	=> "Main",		# Main 5
+		phone6	=> "Pager",		# Pager 6
+		phone7	=> "Other",		# Other 7
+		display	=> "Mobile",		# Display Mobile by default 2
 	};
 
 	return $retval;
@@ -582,7 +582,7 @@ sub ParseRecord
 	$record{phoneLabel}{phone5} = $phoneLabels[$phoneTypes[4]];
 	$record{phoneLabel}{phone6} = $phoneLabels[$phoneTypes[5]];
 	$record{phoneLabel}{phone7} = $phoneLabels[$phoneTypes[6]];
-	$record{phoneLabel}{display} = $dispPhone;
+	$record{phoneLabel}{display} = $displayLabels[$dispPhone];
 
 	# Parse IM Flag
 	$imTypes[0] =  $imFlags        & 0x0f; # IM Label 1
@@ -798,12 +798,12 @@ Palm::Contacts - Handler for Palm OS 5 Contacts databases
 =head1 VERSION
 
 This document describes version 1.400 of
-Palm::Address, released March 14, 2015
+Palm::Contacts, released March 14, 2015
 as part of Palm version 1.400.
 
 =head1 SYNOPSIS
 
-    use Palm::Address;
+    use Palm::Contacts;
 
 =head1 DESCRIPTION
 
@@ -917,7 +917,7 @@ L<Palm::StdAppInfo>
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-Palm::Address requires no configuration files or environment variables.
+Palm::Contacts requires no configuration files or environment variables.
 
 =head1 INCOMPATIBILITIES
 
@@ -933,7 +933,7 @@ Andrew Arensburger C<< <arensb AT ooblick.com> >>
 
 Currently maintained by Christopher J. Madsen C<< <perl AT cjmweb.net> >>
 
-Contacts DB support modified by Benjamin K.
+Contacts DB support contributed by Benjamin K.
 
 You can follow or contribute to p5-Palm's development at
 L<< https://github.com/madsen/p5-Palm >>.
