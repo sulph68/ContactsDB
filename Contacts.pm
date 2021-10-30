@@ -42,24 +42,24 @@ $numFieldLabels = 40;
 @phoneLabels = (
 	"Work",
 	"Home",
-	"Fax",
-	"Other",
+	"Mobile",
 	"E-mail",
 	"Main",
 	"Pager",
+	"Other",
 	"Mobile"
 	);
 
 sub label2phone() {
 	my ($l) = @_;
-	return 0 if ($l eq "Work");
-	return 1 if ($l eq "Home");
-	return 2 if ($l eq "Fax");
-	return 3 if ($l eq "Other");
-	return 4 if ($l eq "E-mail");
-	return 5 if ($l eq "Main");
-	return 6 if ($l eq "Pager");
-	return 7 if ($l eq "Mobile");
+	return 0 if ($l eq $phoneLabels[0]);
+	return 1 if ($l eq $phoneLabels[1]);
+	return 2 if ($l eq $phoneLabels[2]);
+	return 3 if ($l eq $phoneLabels[3]);
+	return 4 if ($l eq $phoneLabels[4]);
+	return 5 if ($l eq $phoneLabels[5]);
+	return 6 if ($l eq $phoneLabels[6]);
+	return 7 if ($l eq $phoneLabels[7]);
 }
 
 @imLabels = (
@@ -67,29 +67,29 @@ sub label2phone() {
 	"AIM",
 	"MSN",
 	"Yahoo",
-	"ICQ"
+	"AOL ICQ"
 );
 
 sub label2im() {
 	my ($l) = @_;
-	return 0 if ($l eq "IM");
-	return 1 if ($l eq "AIM");
-	return 2 if ($l eq "MSN");
-	return 3 if ($l eq "Yahoo");
-	return 4 if ($l eq "ICQ");
+	return 0 if ($l eq $imLabels[0]);
+	return 1 if ($l eq $imLabels[1]);
+	return 2 if ($l eq $imLabels[2]);
+	return 3 if ($l eq $imLabels[3]);
+	return 4 if ($l eq $imLabels[4]);
 }
 
 @addressLabels = (
-	"Work",
-	"Home",
-	"Other"
+	"Addr(W)",
+	"Addr(H)",
+	"Addr(O)"
 );
 
 sub label2address() {
 	my ($l) = @_;
-	return 0 if ($l eq "Work");
-	return 1 if ($l eq "Home");
-	return 2 if ($l eq "Other");
+	return 0 if ($l eq $addressLabels[0]);
+	return 1 if ($l eq $addressLabels[1]);
+	return 2 if ($l eq $addressLabels[2]);
 }
 
 @displayLabels =(
@@ -104,13 +104,13 @@ sub label2address() {
 
 sub label2display() {
 	my ($l) = @_;
-	return 0 if ($l eq "Work");
-	return 1 if ($l eq "Home");
-	return 2 if ($l eq "Mobile");
-	return 3 if ($l eq "E-mail");
-	return 4 if ($l eq "Main");
-	return 5 if ($l eq "Pager");
-	return 6 if ($l eq "Other");
+	return 0 if ($l eq $displayLabels[0]);
+	return 1 if ($l eq $displayLabels[1]);
+	return 2 if ($l eq $displayLabels[2]);
+	return 3 if ($l eq $displayLabels[3]);
+	return 4 if ($l eq $displayLabels[4]);
+	return 5 if ($l eq $displayLabels[5]);
+	return 6 if ($l eq $displayLabels[6]);
 }
 
 
@@ -236,15 +236,15 @@ sub new
 			firstName	=> "First name",
 			company		=> "Company",
 			title			=> "Title",
-			phone1		=> "Work",
-			phone2		=> "Home",
-			phone3		=> "Mobile",
-			phone4		=> "E-mail",
-			phone5		=> "Main",
-			phone6		=> "Pager",
-			phone7		=> "Other",
-			im1				=> "IM 1", # Chat1
-			im2				=> "IM 2", # Chat2
+			phone1		=> $phoneLabels[0],
+			phone2		=> $phoneLabels[1],
+			phone3		=> $phoneLabels[2],
+			phone4		=> $phoneLabels[3],
+			phone5		=> $phoneLabels[4],
+			phone6		=> $phoneLabels[5],
+			phone7		=> $phoneLabels[6],
+			im1				=> $imLabels[0], # Chat1
+			im2				=> $imLabels[1], # Chat2
 			website		=> "Website",
 			custom1		=> "Custom 1",
 			custom2		=> "Custom 2",
@@ -255,26 +255,26 @@ sub new
 			custom7		=> "Custom 7",
 			custom8		=> "Custom 8",
 			custom9		=> "Custom 9",
-			address1	=> "Address 1", # Addr(W)
-			city1			=> "City 1",
-			state1		=> "State 1",
-			zip1			=> "Zip Code 1",
-			country1	=> "Country 1",
-			address2	=> "Address 2", # Addr(H)
-			city2			=> "City 2",
-			state2		=> "State 2",
-			zip2			=> "Zip Code 2",
-			country2	=> "Country 2",
-			address3	=> "Address 3", # Addr(O)
-			city3			=> "City 3",
-			state3		=> "State 3",
-			zip3			=> "Zip Code 3",
-			country3	=> "Country 3",
+			address1	=> $addressLabels[0], # Addr(W)
+			city1			=> "City",
+			state1		=> "State",
+			zip1			=> "ZipCode",
+			country1	=> "Country",
+			address2	=> $addressLabels[1], # Addr(H)
+			city2			=> "City",
+			state2		=> "State",
+			zip2			=> "ZipCode",
+			country2	=> "Country",
+			address3	=> $addressLabels[2], # Addr(O)
+			city3			=> "City",
+			state3		=> "State",
+			zip3			=> "ZipCode",
+			country3	=> "Country",
 			note			=> "Note",
 			birthday	=> "Birthday",
 		},
-
-		misc		=> 0,
+		misc		=> "01001001010011010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000010100100101001101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100110101010011010011100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011001011000010110100001101111011011110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000010100111101001100001000000100100101000011010100010000000000000000000000000000000000000000000000000000000000000000000000000101000001101001011000110111010001110101011100100110010100000000000000000000000000000000000000000000000000000000000000000000000001010000011010000110111101101110011001010010111101000101011011010110000101101001011011000000000000000000000000000000000000000000010010010100110100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000101100100011001000111001001100101011100110111001100000000000000000000000000000000000000000000000000000000000000000000000001000011011000010110110101100101011100100110000100000000000000000000000000000000000000000000000000000000000000000000000000000000010100000110100001101111011101000110111101110011000000000000000000000000000000000000000000000000000000000000000000000000000000000101001001100101011011010110111101110110011001010000000000000000000000000000000000000000000000000000000000000000000000000000000000011110000000000000000000000000",
+		dirtyFields => "00000000000000000000111111111111111111111111111100000001111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111111111111111100000001111111111111111111111111",
 	};
 
 	# Add the standard AppInfo block stuff
@@ -344,14 +344,28 @@ sub new_Record
 
 	# Initialize the phone labels
 	$retval->{phoneLabel} = {
-		phone1	=> "Work",		# Work 0
-		phone2	=> "Home",		# Home 1
-		phone3	=> "Mobile",		# Mobile 7
-		phone4	=> "E-mail",		# E-mail 4
-		phone5	=> "Main",		# Main 5
-		phone6	=> "Pager",		# Pager 6
-		phone7	=> "Other",		# Other 7
-		display	=> "Mobile",		# Display Mobile by default 2
+		phone1	=> $phoneLabels[0],
+		phone2	=> $phoneLabels[1],
+		phone3	=> $phoneLabels[2],
+		phone4	=> $phoneLabels[3],
+		phone5	=> $phoneLabels[4],
+		phone6	=> $phoneLabels[5],
+		phone7	=> $phoneLabels[6],
+		display	=> 2,		# Display Mobile by default 2
+	};
+
+	
+	# Initialize the im labels
+	$retval->{imLabel} = {
+		im1	=> $imLabels[0],
+		im2	=> $imLabels[1],
+	};
+
+	# Initialize the address labels
+	$retval->{addressLabel} = {
+		address1	=> $addressLabels[0],		# Work
+		address2	=> $addressLabels[1],		# Home
+		address3	=> $addressLabels[2],		# Other
 	};
 
 	return $retval;
@@ -364,7 +378,7 @@ sub ParseAppInfoBlock
 	my $data = shift;
 	my $dirtyFields;
 	my @fieldLabels;
-	my $country;
+	my $phoneLabel7;
 	my $misc;
 
 	my $i;
@@ -380,9 +394,15 @@ sub ParseAppInfoBlock
 	my $unpackstr =		# Argument to unpack()
 		"B224" .				# Some Flags. No idea what these are
 		"a$addrLabelLength" x $numFieldLabels .  # Address labels
-		"a*";						# Misc Labels?
+		"a16" .					# Phone custom label on position 7
+		# "a16" x 5 .			# IM labels. 5 positions
+		"B*";						# Misc Labels?
+		# "B*";						# Misc Labels?
 
-	($dirtyFields, @fieldLabels[0..($numFieldLabels-1)], $misc) = unpack($unpackstr, $data);
+	# ($dirtyFields, @fieldLabels[0..($numFieldLabels-1)], $phoneLabels[7], @imLabels[0..4], $misc) = unpack($unpackstr, $data);
+	($dirtyFields, @fieldLabels[0..($numFieldLabels-1)], $phoneLabels[7], $misc) = unpack($unpackstr, $data);
+	
+	# print $misc."=misc\n";
 
 	for (@fieldLabels) {
 		s/\0.*$//;	# Trim everything after the first NUL
@@ -488,7 +508,10 @@ sub PackAppInfoBlock
 		$self->{appinfo}{fieldLabels}{country3},
 		$self->{appinfo}{fieldLabels}{note},
 		$self->{appinfo}{fieldLabels}{birthday});
-	$other .= pack("a".length($self->{appinfo}{misc}), $self->{appinfo}{misc});
+	#$other .= pack("a".length($self->{appinfo}{misc}), $self->{appinfo}{misc});
+	$other .= pack("a16", $phoneLabels[7]);
+	# $other .= pack("a16" x 5, $imLabels[0..4]);
+	$other .= pack("B".length($self->{appinfo}{misc}), $self->{appinfo}{misc});
 	$self->{appinfo}{other} = $other;
 
 	# Pack the standard part of the AppInfo block
@@ -573,7 +596,7 @@ sub ParseRecord
   $phoneTypes[4] = ($phoneFlags >> 16) & 0x0f; # Phone Label 5
   $phoneTypes[5] = ($phoneFlags >> 20) & 0x0f; # Phone Addition Label 1
   $phoneTypes[6] = ($phoneFlags >> 24) & 0x0f; # Phone Addition Label 2
-  $dispPhone	   = ($phoneFlags >> 28) & 0x0f; # Phone Display Type
+  $dispPhone	   = ($phoneFlags >> 28) & 0x0f; # Phone Display - displays which phone item
 
 	$record{phoneLabel}{phone1} = $phoneLabels[$phoneTypes[0]];
 	$record{phoneLabel}{phone2} = $phoneLabels[$phoneTypes[1]];
@@ -582,7 +605,7 @@ sub ParseRecord
 	$record{phoneLabel}{phone5} = $phoneLabels[$phoneTypes[4]];
 	$record{phoneLabel}{phone6} = $phoneLabels[$phoneTypes[5]];
 	$record{phoneLabel}{phone7} = $phoneLabels[$phoneTypes[6]];
-	$record{phoneLabel}{display} = $displayLabels[$dispPhone];
+	$record{phoneLabel}{display} = $dispPhone;
 
 	# Parse IM Flag
 	$imTypes[0] =  $imFlags        & 0x0f; # IM Label 1
@@ -692,7 +715,7 @@ sub PackRecord
 		((&label2phone($record->{phoneLabel}{phone5})   & 0x0f) << 16) |
 		((&label2phone($record->{phoneLabel}{phone6})   & 0x0f) << 20) |
 		((&label2phone($record->{phoneLabel}{phone7})   & 0x0f) << 24) |
-		((&label2display($record->{phoneLabel}{display})  & 0xff) << 28));
+		(($record->{phoneLabel}{display}  							& 0xff) << 28)); # display is the index of phoneX to display
 
 	$retval .= pack("N",
 		(&label2im($record->{imLabel}{im1})			& 0x0f) |
